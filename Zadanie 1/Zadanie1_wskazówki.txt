@@ -1,0 +1,16 @@
+Zadanie 1
+Napisać kod do prognozy wartości za pomocą regresji liniowej
+
+Punkt a - wystarczy wykorzystać wzór na oszacowanie współczynników (na macierze)
+Punkt b - RIDGE, nie korzystamy z gotowych wzorów, metoda iteracyjna, przybliżone szacowanie współczynników.
+Zastanowić się nad optymalnością kodu, jakieś warunki stopu (np liczba powtórzeń, albo zatrzymujemy gdy różnica między współczynnikami różni się nieznacznie)
+
+
+Obie metody muszą przejsć testy
+Warto jest printować niektóre rzeczy w testach (zwłaszcza przy RIDGE printować wyniki każdej iteracji)
+Jak wszystko jest ok to nic się po teście nie wyświetla
+
+Regresja Ridge to
+funkcja kosztu L(yi,~yi) = sum{1 to n} (yi- ~yi)^2 + a*sum{}(theta_i)^2
+a-jakiś współczynnik
+theta_i - współczynniki modelu

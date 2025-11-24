@@ -1,0 +1,28 @@
+Dropout polega na wprowadzeniu tzw. maski
+
+Jak robimy walidację na wektorze testowym to neurony nie są wyłączone, ale żeby zachować wartość oczekiwaną, to trzeba neurony, które były wyłączone przemnożyć przez (1-p)
+
+Dropout
+Zastosowanie Dropoutu zmniejsza wariancję odpowiedzi sieci, lecz może jednocześnie zwiększać obciążenie. Bo dyskryminujemy neurony, które były najlepsze/ najważniejsze w klasyfikacji. W efekcie, dokładność predykcji dla nieznanych
+
+E(^theta - E(theta))**2 = Var(^theta) + Bias(^theta)**2
+
+Dropout ma niewielki koszt użycia, możemy wyeliminować przetrenowanie w dość łatwy sposób
+
+
+Batch Normalization
+Modele predykcyjne ML (w większości) mają większą efektywność uczenia, kiedy dane wejściowe są znormalizowane, tzn. mają średnią 0 i wariancję równą 1.
+
+W sieciach neuronowych, nawet jeżeli znormalizujemy dane wejściowe, to poprzez użycie nieliniowych funkcji aktywacji, odpowiedzi warst już nie muszą znormalizowane, a one stanowią dane dla kolejnych warst.
+Dobrze by było normalizować dane po każdej z walidacji - ale jest to czasochłonne
+
+^A = (sqrt(Cov(A)))**(-1) * (A-^mu)
+Cov(A) - to kowariancja próbkowa
+
+Normalizacja wszystkich odpowiedzi na raz jest złożona obliczeniowo i wydłuża znacząco czas uczenia.
+
+Zamiast normalizować wszystkie odpowiedzi na raz, normalizujemy odpowiedzi neuronów pojedyńczo:
+^a(i) = (a(i) - ^mu(i) ) * 1/^sigma(i)
+
+
+
