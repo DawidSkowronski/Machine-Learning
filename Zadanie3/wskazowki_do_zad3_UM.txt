@@ -1,0 +1,29 @@
+Chodzi o eksperymenty z sieciami splotowymi
+
+Bierzemy zbiór z obrazkami, przypisanych do kilku klas (dobrze jakby to było więcej niż 2 klasy)
+Dobrym zbiorem jest CIFAR-10 - dość wymagający, jak dobrze się podrasuje sieć splotową, to można osiągnąć dokładność na poziomie 80%
+
+Eksperymentować - zmieniać hiperparametry
+hipermarametry to np. liczba warstw, liczba jąder w warstwie, rozmiar jądra
+
+Zrobić przynajmniej z 3/4 testy (zmieniamy jeden hiperparametr w jednym badaniu)
+
+- wpływ rozmiarów filtrów
+- wpływ liczby filtrów w warstwie
+- padding, stride, dropout
+
+- można też zmienić liczbę warstw
+
+
+Np. mamy już ustaloną strukturę sieci (np. odpowiednio dobrane wymiary warstw i liczba warstw) - i na tym zmieniamy/badamy te hipermarametry
+
+Możemy uczyć model, zapisać go zrobić analizę wyników, i dopiero później go douczać.
+- warto rozważyć dropout, batch normalization - może mieć spory wpływ.
+
+Dobrze jest wygenerować krzywe uczenia, (czy model się przeucza czy nie)
+
+Najwygodniej jest to robić w jupyter notebook, zostawiać komentarze
+
+Zadanie 4
+
+
