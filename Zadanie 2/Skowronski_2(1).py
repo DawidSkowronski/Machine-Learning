@@ -28,7 +28,7 @@ class Warstwa:
         self.liczba_wejscie = liczba_wejscie
         
         # Ustalamy stałą uczenia dla całej warstwy
-        self.stala_uczenia = 0.03
+        self.stala_uczenia = 0.01
 
         # Inicjalizacja wag
         self.wagi = wygeneruj_wagi(self.liczba_wejscie, self.liczba_neuronow)
@@ -82,8 +82,6 @@ class Warstwa:
         """Definiujemy propagację wstecz.
         W ostatniej warstwie liczymy funkcję straty, następnie pochodną dL/da."""
         
-        # Funkcja straty to L = 1/2(a[L]-y)^2, czyli pochodna z L to a[L]-y
-
         # mamy pochodną dL/da * fi(net)
         delta = dL_a * self.pochodna_fun_aktywacji( self.net )
         dL_dW = delta @ self.X.T
@@ -128,7 +126,7 @@ class SiecNeuronowa:
     def backward_propagation(self, y):
 
         ostatnie_wyjscie = self.warstwy[-1].wyjscia_forward_prop
-
+        # Funkcja straty to L = 1/2(a[L]-y)^2, czyli pochodna z L to a[L]-y
         dL_da = ostatnie_wyjscie - y
 
         for i in range(len(self.warstwy) - 1, -1, -1):
@@ -216,7 +214,7 @@ def trenuj_siec():
     fun_akt_sig = ["sigmoid","sigmoid","sigmoid","sigmoid"]
     fun_akt_relu_sig = ["relu","relu","sigmoid"]
     fun_akt_relu = ["relu","relu","relu"]
-    siec = SiecNeuronowa([784,128,64,10], funkcje_aktywacji=fun_akt_sig)
+    siec = SiecNeuronowa([784,128,64,10], funkcje_aktywacji=fun_akt_relu_sig)
 
     print("Trening")
     historia = siec.fit(dane_treningowe, epoki= 10, rozmiar_batcha= 100)
@@ -226,6 +224,10 @@ def trenuj_siec():
 
     print(f"Dokładność na zbiorze treningowym: {100*dokladnosc_trening:.4f} %")
     print(f"Dokładność na zbiorze testowym: {100*dokladnosc_test:.4f} %")
+
+    plt.plot(historia)
+    plt.title("Wartość funkcji straty w epokach")
+    plt.xlabel("Epoki")
 
     return siec, historia
 
